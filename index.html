@@ -8,7 +8,7 @@
     <div id="app">
             <div class="cyfry" v-for="r in rows">
                 <div v-for="c in columns">
-                    <div class="cell" :class="{active: (active[0]==c && active[1]==r)}">
+                    <div class="cell" :class="{active: (active[0]==r && active[1]==c)}" @click="active=[r,c]">
                         {{ r }},{{ c }}
                     </div>
                 </div>
@@ -24,6 +24,11 @@
             rows:10,
             columns:10,
             active:[1,1]
+        },
+        methods:{
+            changeCells(rowIndex,columnIndex) {
+                this.active=[rowIndex,columnIndex];
+            }
         }
     })
     </script>
