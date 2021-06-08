@@ -8,7 +8,7 @@
     <div id="app">
             <div class="cyfry" v-for="r in rows">
                 <div v-for="c in columns">
-                    <div class="cell">
+                    <div class="cell" :class="{active: (active[0]==c && active[1]==r)}">
                         {{ r }},{{ c }}
                     </div>
                 </div>
@@ -22,18 +22,14 @@
         data: {
             message: 'Powodzenia',
             rows:10,
-            columns:10
+            columns:10,
+            active:[1,1]
         }
     })
     </script>
 
 
 <style>
-.cyfry
-{
-    display: flex;
-    flex-direction: row;
-}
 
 .cell
 {
@@ -48,6 +44,18 @@
     border-radius: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
+}
+
+.cyfry
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.active
+{
+    color:white;
+    background-color: red;
 }
 
 </style>
