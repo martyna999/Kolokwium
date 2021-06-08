@@ -8,7 +8,7 @@
     <div id="app">
             <div class="cyfry" v-for="r in rows">
                 <div v-for="c in columns">
-                    <div class="cell" :class="{active: (active[0]==r && active[1]==c)}" @click="active=[r,c]">
+                    <div class="cell" :class="{active: (active[0]==r && active[1]==c)}" @click="active=[r,c]" @keyup.down="active=[r+1,c]" @keyup.up="active=[r-1,c]" @keyup.right="active=[r,c+1]" @keyup.left="active=[r,c-1]">
                         {{ r }},{{ c }}
                     </div>
                 </div>
@@ -23,7 +23,8 @@
             message: 'Powodzenia',
             rows:10,
             columns:10,
-            active:[1,1]
+            active:[1,1],
+            tabindex: 0
         },
         methods:{
             changeCells(rowIndex,columnIndex) {
@@ -67,5 +68,6 @@
 
 </body>
 </html>
+
 
 
